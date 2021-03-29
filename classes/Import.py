@@ -8,7 +8,7 @@ class File:
 
 	def fetch():
 		http = httplib2.Http()
-		response, content = http.request(File.endpoint, "GET")
+		response, content = http.request(File.endpoint,"GET")
 		
 		handle = open(File.dataPath,"w")
 		handle.write(content.decode("utf-8"))
@@ -44,6 +44,7 @@ class Build:
 
 		return True
 
+	# Return compatible cables based on type, ampere and phase
 	def compatibleCables(type,ampere,phase):
 		# Type 1
 		if(type == "Type 1"):

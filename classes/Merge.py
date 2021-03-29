@@ -1,14 +1,24 @@
 import json
 
-from .Functions import *
-from .settings import *
-
-# Merge insert two objects
+# Merge new vehicle data with existing vehicle data
 class Merge:
+	def __init__(self,data_from,data_to):
+		self.input = self.assigned_list(data_from) # Merge this..
+		self.output = data_to # ..With this
 
-	def __init__(self,this,that):
-		self.data_target = load_JSON(data_vehicles)
-		self.data_insert = load_JSON(data_vehicles_new)
+		# Merge lists
+		self.output.update(self.input)
 
-	def run(self):
-		print(data_vehicles_new)
+	# Create assigned list from EVDB array of objects
+	def assigned_list(self,data):
+		output = {}
+		for vehicle in data:
+			key = str(vehicle["Vehicle_ID"])
+			output[key] = vehicle
+		return output
+
+	# Save merged output to file
+	def write(self,dest):
+		with open(dest,"w") as f:
+			json.dump(self.output,f)
+		return True

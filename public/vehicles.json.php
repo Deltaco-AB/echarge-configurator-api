@@ -10,6 +10,6 @@
 		];
 	}
 
-	echo json_encode($output);
+	echo $output;
 
 ?>

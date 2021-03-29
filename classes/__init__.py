@@ -1,4 +1,2 @@
-from .settings import *
-
-from .Functions import *
-from .Merge import *
+from .Merge import Merge
+from .Build import Build

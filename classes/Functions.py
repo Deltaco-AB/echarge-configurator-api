@@ -1,12 +1,15 @@
 import json
 from pathlib import Path
 
-# Import a JSON file
-def load_JSON(f):
+# Attempt to load JSON into memory
+def load(self,f):
 	if not Path(f).is_file():
-		return False
-	
-	with open(f) as f:
-		data = json.load(f)
+		raise IOError(f"Input file '{x}' not found")
 
-	return data
+	with open(f) as f:
+		return json.load(f)
+
+# Map key,value list
+def forEach(list,func):
+	for i,v in enumerate(list):
+		func(v,i,list)
